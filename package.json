@@ -2,7 +2,7 @@
   "name": "Strathos Web",
   "version": "0.1.0",
   "engines": {
-    "node": "14.13.1"
+    "node": "10.15.3"
   },
   "private": true,
   "dependencies": {
