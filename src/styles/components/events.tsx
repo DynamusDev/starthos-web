@@ -51,8 +51,8 @@ export const EventList = styled.ul`
 
 export const Button = styled.button`
   font-family: 400 18px 'Ubuntu', sans-serif;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   text-align: center;
   background-color: red;
   color: #333;
@@ -74,7 +74,6 @@ export const Button = styled.button`
 
 export const DataHora = styled.div`
   display: flex;
-  height: 20px;
   width: 100%;
   color: #FFF;
   align-items: center;
@@ -82,7 +81,7 @@ export const DataHora = styled.div`
 `;
 
 export const DataText = styled.p`
-  font-size: 20px;
+  font-size: 15px;
   color: #FFF;
   font-family: 'Ubuntu';
   text-align: center;
@@ -90,7 +89,7 @@ export const DataText = styled.p`
 `;
 
 export const Id = styled.p`
-  font-size: 25px;
+  font-size: 15px;
   color: #FFF;
   text-align: center;
   font-family: 'Ubuntu';
@@ -103,7 +102,9 @@ export const Details = styled.button`
   border-width: 1px;
   border-color: #444;
   height: 90%;
+  min-height: 500px;
   width: 45%;
+  min-width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,14 +142,14 @@ export const Body = styled.div`
 `;
 
 export const ContentTitle = styled.p`
-  font-size: 15pt;
+  font-size: 15px;
   font-family: 'Ubuntu';
   font-weight: 500;
   color: #58595B;
 `;
 
 export const Content = styled.p`
-  font-size: 15pt;
+  font-size: 15px;
   font-family: 'Ubuntu';
   color: #58595B;
 `;
@@ -175,7 +176,7 @@ export const FooterButton = styled.button`
 `;
 
 export const ContentButton = styled.text`
-  font-size: 15pt;
+  font-size: 0.9em;
   color: #FFF;
   font-family: "Ubuntu";
   font-weight: 300;

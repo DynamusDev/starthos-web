@@ -12,6 +12,23 @@ import {
   Close,
 } from '../styles/components/header';
 
+interface TextStyle {
+  textShadowOffset?:  {width: number,height: number},
+  color?: string,
+  fontSize?: number,
+  fontStyle?: 'normal' | 'italic',
+  fontWeight?: 'normal'| 'bold'| '100'| '200'| '300'| '400'| '500'| '600'| '700'| '800'| '900',
+  lineHeight?: number,
+  textAlign?: 'auto'| 'left'| 'right'| 'center'| 'justify',
+  textDecorationLine?: 'none'| 'underline'| 'line-through'| 'underline line-through',
+  textShadowColor?: string,
+  fontFamily?: string,
+  includeFontPadding?: boolean,
+  textAlignVertical?: 'auto'| 'top'| 'bottom'| 'center',
+  textTransform?: 'none'| 'uppercase'| 'lowercase'| 'capitalize',
+  textDecorationStyle?: 'solid'| 'double'| 'dotted'| 'dashed',
+};
+
 interface Props {
   backButton?: boolean,
   nextButton?: boolean,
@@ -23,10 +40,10 @@ interface Props {
   onCloseClick?: any,
   background?: string,
   title?: string,
-  textStyle?: object
+  textStyle?: React.CSSProperties
 }
 
-function Header(props: Props) {
+export function Header(props: Props) {
   const history = useHistory();
   var user = JSON.parse(localStorage.getItem('user') || '')
 
@@ -48,5 +65,3 @@ function Header(props: Props) {
   </Head>
   )
 }
-
-export default Header;

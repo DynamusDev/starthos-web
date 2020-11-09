@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { api, sock } from '../services/api';
 import socketio from 'socket.io-client';
 
-import Header from '../components/header';
+import {Header} from './';
 
 import folder from '../assets/folder.png'
 
@@ -34,7 +34,7 @@ interface Props {
   onChange?: object,
 }
 
-export default function Events(props: Props) {
+export function Events(props: Props) {
   const [ativos, setAtivos] : any = useState([])
   const [finalizados, setFinalizados] : any = useState([])
   const [arquivados, setArquivados] : any = useState([])

@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import Side from '../components/side'
-import Screen from '../components/screen'
-import Header from '../components/header'
-import Events from '../components/events'
+import { Header, Side, Screen, Events } from '../components'
 
 import { Container, Add, Close, Content } from '../styles/home';
 
-function Home() {
+export function Home() {
 
   return (
     <Container>
@@ -26,5 +23,3 @@ function Home() {
     </Container>
   )
 }
-
-export default Home;

@@ -14,38 +14,38 @@ export const Head = styled.header`
 `;
 
 export const Text = styled.h1`
-  font-size: 2em;
+  font-size: 1.5em;
 `;
 
 export const Back = styled(FiArrowLeft).attrs({
-  size: 30,
-  color: '#333'
+  size: 25,
+  color: '#FFF'
 })`
   
 `;
 
 export const Next = styled(FiArrowRight).attrs({
-  size: 30,
-  color: '#333'
+  size: 25,
+  color: '#FFF'
 })`
   
 `;
 
 export const File = styled(FiFile).attrs({
-  size: 30,
+  size: 25,
   color: '#333'
 })`
   
 `;
 
 export const Close = styled(FiX).attrs({
-  size: 30,
+  size: 25,
   color: '#333'
 })`
   
 `;
 
 export const Space = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 `;

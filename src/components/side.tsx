@@ -19,7 +19,7 @@ import {
         SignIn
       } from '../styles/components/side';
 
-function Side() {
+export function Side() {
   const history = useHistory();
   var user = JSON.parse(localStorage.getItem('user') || '')
 
@@ -30,11 +30,11 @@ function Side() {
 
   return (
   <Container>
-    <div style={{display: 'flex', flexDirection: 'row', background: '#58595B', height: 'auto', width: 400, alignItems: 'center'}} id='profile'>
+    <div style={{display: 'flex', flexDirection: 'row', background: '#58595B', height: 'auto', width: 'auto', alignItems: 'center'}} id='profile'>
       <img style={{height: 100, width: 100, borderRadius: 20, marginRight: 15}} src={`data: image/jpeg; base64, ${user.image}`} alt="foto"/>
-      <div style={{display: 'flex', flexDirection: 'column', background: '#58595B', height: 'auto', justifyContent: 'center'}} id='profile'>
-        <h1 style={{color: '#fff', fontSize: 18, width: '100%', textAlign: 'center'}} >{user.name}</h1>
-        <p style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'center', fontWeight: 'bold'}}>{user.position}</p>
+      <div style={{display: 'flex', flexDirection: 'column', background: '#58595B', height: 100, justifyContent: 'center'}} id='profile'>
+        <h1 style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'center'}} >{user.name}</h1>
+        <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'center', fontWeight: 'bold'}}>{user.position}</p>
         <a onClick={()=>{alert('teste')}} className="button" id='forgot'>Editar</a>
       </div>
     </div>
@@ -73,5 +73,3 @@ function Side() {
   </Container>
   )
 }
-
-export default Side;

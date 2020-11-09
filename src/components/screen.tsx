@@ -10,7 +10,7 @@ interface Props {
   children?: any
 }
 
-export default function Screen(props: Props) {
+export function Screen(props: Props) {
   return (
     <Container onFocus={props.onFocus ? props.onFocus : () => {}}>
       {props.children}

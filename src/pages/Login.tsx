@@ -7,9 +7,9 @@ import ReactLoading from 'react-loading';
 
 import { api } from '../services/api'
 
-import { Container } from '../styles/login';
+import { Container, Powered } from '../styles/login';
 
-function Login() {
+export function Login() {
   const [email, setEmail] = useState('');
   const [emailP, setEmailP] = useState('');
   const [password, setPassword] = useState('');
@@ -76,7 +76,7 @@ function Login() {
 
   return (
     <Container>
-      <h1>Powered by Starthos</h1>
+      <Powered>Powered by Starthos</Powered>
       {
         loading ? 
           <ReactLoading type='spin' color='#333' />
@@ -94,7 +94,7 @@ function Login() {
                     onChange={e => setEmailP(e.target.value)}
                   />
                   <button className="button" type="submit">
-                    ENVIAR
+                    Enviar
                   </button>
                   <a onClick={()=>{setForgot(false)}} className="button" id='forgot'>
                     Retornar ao login
@@ -131,5 +131,3 @@ function Login() {
     </Container>
   )
 }
-
-export default Login;

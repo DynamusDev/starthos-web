@@ -8,15 +8,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #FFF;
+  position: relative;
 
   img{
-    width: 450px;
+    width: 300px;
     margin-bottom: 60px;
   };
 
   form{
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
 
     display: flex;
     flex-direction: column;
@@ -27,11 +28,11 @@ export const Container = styled.div`
     p {
       text-align: center;
       color: #25282a;
-      font-size: 20pt;
+      font-size: 1em;
     };
 
     input {
-      font-size: 24px;
+      font-size: 1.5em;
       background: #FFF
     };
 
@@ -43,7 +44,7 @@ export const Container = styled.div`
     };
 
     p {
-      font-size: 32px;
+      font-size: 2.5em;
       margin-bottom: 32px;
       align-items: center;
       text-align: center;
@@ -56,11 +57,12 @@ export const Container = styled.div`
       text-decoration: underline;
     }
   }
+`;
 
-  h1 {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    font-size: 15px;
-  }
+export const Powered = styled.h1`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 15px;
+  color: #333;
 `;
