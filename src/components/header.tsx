@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { Icon, Translator } from './'
 
 import { 
   Head,
@@ -50,17 +51,17 @@ export function Header(props: Props) {
   return (
   <Head style={{background: props.background ? props.background : 'transparent'}}>
     {
-      props.backButton ? <Back onClick={props.onBackClick ? props.onBackClick : ()=>{}} /> : <Space />
+      props.backButton ? <Icon name='back' onClick={props.onBackClick} /> : <Space />
     }
     {
-      props.fileButton ? <File onClick={props.onFileClick ? props.onFileClick : ()=>{}} /> : <Space />
+      props.fileButton ? <File onClick={props.onFileClick} /> : <Space />
     }
-    <Text style={props.textStyle}> {props.title} </Text>
+    <Text style={props.textStyle}> <Translator path={props.title} /> </Text>
     {
-      props.closeButton ? <Close onClick={props.onCloseClick ? props.onCloseClick : ()=>{}} /> : <Space />
+      props.closeButton ? <Close onClick={props.onCloseClick} /> : <Space />
     }
     {
-      props.nextButton ? <Next onClick={props.onNextClick ? props.onNextClick : ()=>{}} /> : <Space />
+      props.nextButton ? <Next onClick={props.onNextClick} /> : <Space />
     }
   </Head>
   )

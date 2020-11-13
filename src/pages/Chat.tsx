@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { api, sock } from '../services/api';
 import socketio from 'socket.io-client';
 
-import { Header, Side, Screen, Events } from '../components'
+import { Header, Side, Screen, Icon } from '../components'
 
 import { Container } from '../styles/chat';
 

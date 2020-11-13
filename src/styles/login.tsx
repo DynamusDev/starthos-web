@@ -28,23 +28,25 @@ export const Container = styled.div`
     p {
       text-align: center;
       color: #25282a;
-      font-size: 1em;
+      font-size: 15px;
     };
 
     input {
-      font-size: 1.5em;
+      font-size: 1em;
       background: #FFF
     };
 
     button {
       color: #FFF;
+      width: 70%;
+      height: 50px;
       justify-content: center;
       align-items: center;
       background: #000;
     };
 
     p {
-      font-size: 2.5em;
+      font-size: 1.5em;
       margin-bottom: 32px;
       align-items: center;
       text-align: center;
@@ -55,6 +57,7 @@ export const Container = styled.div`
       color: #333;
       cursor: pointer;
       text-decoration: underline;
+      font-size: 1em;
     }
   }
 `;

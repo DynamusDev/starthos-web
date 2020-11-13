@@ -50,13 +50,10 @@ export default createGlobalStyle `
 
   .button{
     font-family: 400 18px 'Ubuntu', sans-serif;
-    width:70%;
-    height: 50px;
     border: 0;
     border-radius: 8px;
     color: #fff;
     font-weight: 700;
-    margin-top: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;

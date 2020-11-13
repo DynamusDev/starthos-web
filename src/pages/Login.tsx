@@ -4,6 +4,7 @@ import {FiLogIn} from 'react-icons/fi';
 import logo from '../assets/logo.svg'
 import starthos from '../assets/starthos.svg'
 import ReactLoading from 'react-loading';
+import {Translator} from '../components';
 
 import { api } from '../services/api'
 
@@ -85,7 +86,7 @@ export function Login() {
                 <form onSubmit={forgotPassword}>
                   <img className="logo" src={logo} alt="Starthos"/>
 
-                  <p>Esqueci minha senha</p>
+                  <p><Translator path='forgotPassword' /></p>
           
                   <input 
                     placeholder="email@email.com.br"
@@ -94,10 +95,10 @@ export function Login() {
                     onChange={e => setEmailP(e.target.value)}
                   />
                   <button className="button" type="submit">
-                    Enviar
+                    <Translator path='send' />
                   </button>
                   <a onClick={()=>{setForgot(false)}} className="button" id='forgot'>
-                    Retornar ao login
+                    <Translator path='comeBackLogin' />
                   </a>
                 </form>
                   :
@@ -107,24 +108,24 @@ export function Login() {
                       <p>Login</p>
               
                       <input 
-                        placeholder="email@email.com.br"
+                        placeholder="email@email.com"
                         value={email}
                         type='email'
                         onChange={e => setEmail(e.target.value)}
                       />
 
                       <input 
-                        placeholder="senha"
+                        placeholder='password'
                         value={password}
                         type='password'
                         onChange={e => setPassword(e.target.value)}
                       />
               
                       <button className="button" type="submit">
-                        Entrar
+                        <Translator path='signin' />
                       </button>
                       <a onClick={()=>{setForgot(true)}} className="button" id='forgot'>
-                        Esqueci minha senha
+                        <Translator path='forgotPassword' />
                       </a>
                     </form>
       }

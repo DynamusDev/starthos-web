@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { api, sock } from '../services/api';
 import socketio from 'socket.io-client';
 
-import {Header} from './';
+import {Header, Translator} from './';
 
 import folder from '../assets/folder.png'
 
@@ -48,11 +48,11 @@ export function Events(props: Props) {
 
   useEffect(() => {
     socket.on(user.location, (data: any[]) => {
-      setAtivos(data.filter((data: { status: string }) => data.status === 'ativo'))
-      setFinalizados(data.filter((data: { status: string }) => data.status === 'finalizado'))
-      setArquivados(data.filter((data: { status: string }) => data.status === 'arquivado'))
+      ativos.push(data.filter((data: { status: string }) => data.status === 'ativo'))
+      finalizados.push(data.filter((data: { status: string }) => data.status === 'finalizado'))
+      arquivados.push(data.filter((data: { status: string }) => data.status === 'arquivado'))
     })
-  }, [socket, user.location])
+  }, [arquivados, ativos, finalizados, socket, user.location])
 
   function loadAtivo(ativo: any) {
     setEvent(ativo)
@@ -149,23 +149,23 @@ export function Events(props: Props) {
             />
             <Timming>
               <Time>
-                <ContentTitle> Data da Ocorrência </ContentTitle>
+                <ContentTitle> <Translator path='dateOfEvent' /> </ContentTitle>
                 <Content> {event.date} </Content>
               </Time>
               <Time>
-                <ContentTitle> Horário da Ocorrência </ContentTitle>
+                <ContentTitle> <Translator path='timeOfEvent' /> </ContentTitle>
                 <Content> {event.time} </Content>
               </Time>
             </Timming>
             <Body>
               <Timming>
                 <Time>
-                  <ContentTitle> Tipo Ocorrência </ContentTitle>
+                  <ContentTitle> <Translator path='typeOfEvent' /> </ContentTitle>
                   <Content> {event.type} </Content>
                 </Time>
                 {event.type === 'Aeronave Envolvida' && 
                   <Time>
-                    <ContentTitle> Prefixo da Aeronave </ContentTitle>
+                    <ContentTitle> <Translator path='aircraftPrefix' /> </ContentTitle>
                     <Content> {event.prefix} </Content>
                   </Time>
                 }
@@ -173,21 +173,21 @@ export function Events(props: Props) {
               {event.type === 'Aeronave Envolvida' &&
                 <Timming>
                   <Time>
-                    <ContentTitle> Cabeceira de Pouso </ContentTitle>
+                    <ContentTitle> <Translator path='landingHeadboard' /> </ContentTitle>
                     <Content> {event.cabeceira_dePouso} </Content>
                   </Time>
                   <Time>
-                    <ContentTitle> Modelo da Aeronave </ContentTitle>
+                    <ContentTitle> <Translator path='aircraftModel' /> </ContentTitle>
                     <Content> {event.modelo_aeronave} </Content>
                   </Time>
                 </Timming>
               }
-              <ContentTitle> Responsável pela Abertura da Ocorrência </ContentTitle>
+              <ContentTitle> <Translator path='responsibleForOpeningEvent' /> </ContentTitle>
               <Content> {event.name} </Content>
 
               <Separate />
 
-              <ContentTitle> Local da Ocorrência </ContentTitle>
+              <ContentTitle> <Translator path='eventLocation' /> </ContentTitle>
               <Timming>
                 <ContentTitle> {event.icao} </ContentTitle>
                 <Content> - </Content>
@@ -196,19 +196,19 @@ export function Events(props: Props) {
 
               <Time>
                 { event.updatedBy !== '' && event.status === 'arquivado' ? 
-                  <ContentTitle> Arquivada por </ContentTitle>
+                  <ContentTitle> <Translator path='filedBy' /> </ContentTitle>
                   : event.updatedBy !== '' && event.status === 'finalizado' &&
-                    <ContentTitle> Finalizada por </ContentTitle>
+                    <ContentTitle> <Translator path='closedBy' /> </ContentTitle>
                 }
                 <Content> {event.updatedBy} </Content>
               </Time>
 
-              <ContentTitle> Status </ContentTitle>
+              <ContentTitle> <Translator path='status' /> </ContentTitle>
               <Content> {event.status} </Content>
 
               <Separate />
 
-              <ContentTitle> Descrição </ContentTitle>
+              <ContentTitle> <Translator path='description' /> </ContentTitle>
               <Content> {event.description} </Content>
             </Body>
             <Footer>
@@ -219,7 +219,7 @@ export function Events(props: Props) {
                     backgroundColor: event.category === 'emergência' ? '#C40000' : event.category === 'manutenção' ? '#FF8A00' : event.category === 'estoque' ? '#0065A7' : event.category === 'pista' ? '#002A4E' : '#58595B', 
                   }}
                 >
-                  <ContentButton >Finalizar Ocorrência</ContentButton>
+                  <ContentButton ><Translator path='closeEvent' /></ContentButton>
                 </FooterButton>
               }
               <FooterButton 
@@ -228,7 +228,7 @@ export function Events(props: Props) {
                     backgroundColor: event.category === 'emergência' ? '#C40000' : event.category === 'manutenção' ? '#FF8A00' : event.category === 'estoque' ? '#0065A7' : event.category === 'pista' ? '#002A4E' : '#58595B', 
                   }}
                 >
-                  <ContentButton >Ir para sala de crises</ContentButton>
+                  <ContentButton ><Translator path='goToCrisisRoom' /></ContentButton>
                 </FooterButton>
             </Footer>
           </Details>

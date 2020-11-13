@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import {FiLogOut, FiUsers, FiArchive} from 'react-icons/fi';
-import { FaFreeCodeCamp } from 'react-icons/fa';
+import { Button, Translator } from './'
 
 import emerg from '../assets/emergencia.png'
 import estoque from '../assets/estoque.png'
@@ -10,18 +10,13 @@ import pista from '../assets/pista.png'
 
 import { 
         Container, 
-        Bar, 
-        Emergência,
-        Manutenção,
-        Estoque,
-        Pista,
-        Logout,
-        SignIn
+        Bar,
       } from '../styles/components/side';
 
 export function Side() {
+  const [i18n, setI18n] = useState(false);
   const history = useHistory();
-  var user = JSON.parse(localStorage.getItem('user') || '')
+  var user = JSON.parse(localStorage.getItem('user') || '');
 
   function logout() {
     localStorage.clear();
@@ -33,43 +28,30 @@ export function Side() {
     <div style={{display: 'flex', flexDirection: 'row', background: '#58595B', height: 'auto', width: 'auto', alignItems: 'center'}} id='profile'>
       <img style={{height: 100, width: 100, borderRadius: 20, marginRight: 15}} src={`data: image/jpeg; base64, ${user.image}`} alt="foto"/>
       <div style={{display: 'flex', flexDirection: 'column', background: '#58595B', height: 100, justifyContent: 'center'}} id='profile'>
-        <h1 style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'center'}} >{user.name}</h1>
-        <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'center', fontWeight: 'bold'}}>{user.position}</p>
-        <a onClick={()=>{alert('teste')}} className="button" id='forgot'>Editar</a>
+        <h1 style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'left'}} >{user.name}</h1>
+        <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'left', fontWeight: 'bold'}}>{user.position}</p>
+        <a onClick={()=>{alert('teste')}} className="button" id='forgot'>
+          <Translator path='edit' />
+        </a>
       </div>
     </div>
     <Bar />
-    <SignIn onClick={()=>{alert('teste')}} className="button" >
-      <FiArchive size={30} color='#fcfcff'/>
-      <p>Ocorrências</p>
-    </SignIn>
+    <Button name='emergência' onClick={()=>{alert('teste')}}/>
+    <Button name='manutenção' onClick={()=>{alert('teste')}}/>
+    <Button name='estoque' onClick={()=>{alert('teste')}}/>
+    <Button name='pista' onClick={()=>{alert('teste')}}/>
+    <Button name='aeroportos' onClick={()=>{alert('teste')}}/>
+    <Button name='tasks' onClick={()=>{alert('teste')}}/>
+    <Button name='ocorrências' onClick={()=>{history.push('/home')}}/>
     {
       user.master == 1 &&
-        <SignIn onClick={()=>{alert('teste')}} className="button" >
-          <FiUsers size={30} color='#fcfcff'/>
-          <p>Cadastrar Membro</p>
-        </SignIn>
+      <>
+        <Button name='addUser' onClick={()=>{alert('teste')}}/>
+        <Button name='editUser' onClick={()=>{alert('teste')}}/>
+      </>
     }
-    <Emergência onClick={()=>{alert('teste')}} className="button" >
-      <img src={emerg} alt="emergencia" />
-      <p>Emergência</p>
-    </Emergência>
-    <Manutenção onClick={()=>{alert('teste')}} className="button" >
-      <img src={manut} alt="emergencia" />
-      <p>Manutenção</p>
-    </Manutenção>
-    <Estoque onClick={()=>{alert('teste')}} className="button" >
-      <img src={estoque} alt="emergencia" />
-      <p>Estoque</p>
-    </Estoque>
-    <Pista onClick={()=>{alert('teste')}} className="button" >
-      <img src={pista} alt="emergencia" />
-      <p>Pista</p>
-    </Pista>
-    <Logout onClick={()=>{logout()}}>
-      <FiLogOut size={30} color='#fcfcff'/>
-      <p>Logout</p> 
-    </Logout>
+    <Button i18n={i18n} name='translator' onClick={i18n === true ? ()=>{setI18n(false)} : ()=>{setI18n(true)}}/>
+    <Button name='logout' onClick={logout}/>
   </Container>
   )
 }

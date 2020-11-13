@@ -15,7 +15,7 @@ export function Home() {
             fileButton={false}
             backButton={false}
             nextButton={false}
-            title='Ocorrências'
+            title='ocorrências'
           />
           <Events />
         </Screen>
