@@ -13,7 +13,7 @@ const i18nConfig = {
 }
 
 i18n
-  // .use(LanguageDetector)
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init(i18nConfig)
 

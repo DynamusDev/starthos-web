@@ -32,6 +32,8 @@ import usaFlag from './icons/usaFlag.png'
 interface Props {
   onClick?: any,
   size?: number,
+  width?: number,
+  height?: number,
   style?: React.CSSProperties,
   name?:  'addUser' | 'aeroportos' | 'emergência' | 'iconBranco' |
           'logout' | 'manutenção' | 'ocorrências' | 'pista' | 'tasks' |
@@ -100,9 +102,9 @@ export function Icon(props: Props) {
   }, [])
 
   return (
-    <Container style={props.style} onClick={props.onClick} >
+    <Container onClick={props.onClick} >
       <Image 
-        style={ {height: props.size, width: props.size} } 
+        style={ {...props.style, height: props.height, width: props.width} } 
         src={img}
         alt='DEV: Informe o nome do ícone'
       />

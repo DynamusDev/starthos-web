@@ -20,10 +20,10 @@ export function I18n(props: Props) {
   return(
     <Container>
       <Flag onClick={()=>{handleChangeLanguage('pt-BR')}} >
-        <Icon size={30} name='brasilFlag' />
+        <Icon width={35} height={25} name='brasilFlag' />
       </Flag>
       <Flag onClick={()=>{handleChangeLanguage('en-US')}} >
-        <Icon size={30} name='usaFlag' />
+        <Icon width={35} height={25} name='usaFlag' />
       </Flag>
     </Container>
   )

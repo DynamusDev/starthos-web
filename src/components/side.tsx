@@ -19,7 +19,7 @@ export function Side() {
   var user = JSON.parse(localStorage.getItem('user') || '');
 
   function logout() {
-    localStorage.clear();
+    localStorage.removeItem('user')
     history.push('/');
   }
 
