@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.js": "/static/js/main.b0d49fb9.chunk.js",
-    "main.js.map": "/static/js/main.b0d49fb9.chunk.js.map",
+    "main.js": "/static/js/main.ad0a5a57.chunk.js",
+    "main.js.map": "/static/js/main.ad0a5a57.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2a17bbaa.js",
     "runtime-main.js.map": "/static/js/runtime-main.2a17bbaa.js.map",
-    "static/js/2.65ee99d2.chunk.js": "/static/js/2.65ee99d2.chunk.js",
-    "static/js/2.65ee99d2.chunk.js.map": "/static/js/2.65ee99d2.chunk.js.map",
+    "static/js/2.9d31afa4.chunk.js": "/static/js/2.9d31afa4.chunk.js",
+    "static/js/2.9d31afa4.chunk.js.map": "/static/js/2.9d31afa4.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.65ee99d2.chunk.js.LICENSE.txt": "/static/js/2.65ee99d2.chunk.js.LICENSE.txt",
-    "static/media/logo.34e17340.svg": "/static/media/logo.34e17340.svg"
+    "static/js/2.9d31afa4.chunk.js.LICENSE.txt": "/static/js/2.9d31afa4.chunk.js.LICENSE.txt",
+    "static/media/avatar.94abaf6a.png": "/static/media/avatar.94abaf6a.png",
+    "static/media/brasilFlag.a4ed57ec.png": "/static/media/brasilFlag.a4ed57ec.png",
+    "static/media/logo.34e17340.svg": "/static/media/logo.34e17340.svg",
+    "static/media/usaFlag.c50872fb.png": "/static/media/usaFlag.c50872fb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2a17bbaa.js",
-    "static/js/2.65ee99d2.chunk.js",
-    "static/js/main.b0d49fb9.chunk.js"
+    "static/js/2.9d31afa4.chunk.js",
+    "static/js/main.ad0a5a57.chunk.js"
   ]
 }
