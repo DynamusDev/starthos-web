@@ -121,10 +121,11 @@ export function Events(props: Props) {
   async function loadEvents() {
     const response = await api.get('events')
     const data = response.data
-    console.log('CARREGOU', data)
+    if(data.length > 0){
     setAtivos(data.filter((data: { status: string; }) => data.status === 'ativo'))
     setFinalizados(data.filter((data: { status: string; }) => data.status === 'finalizado'))
     setArquivados(data.filter((data: { status: string; }) => data.status === 'arquivado'))
+    }
   }
 
   useEffect(() => {
