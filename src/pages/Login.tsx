@@ -58,7 +58,7 @@ export function Login() {
                 password
               }
             );
-        if (response.data.status === 200){
+        if (response.data.status === 201){
           setLoading(false)
           localStorage.setItem('user', JSON.stringify(response.data.user));
           console.log(response.data)
