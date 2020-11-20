@@ -29,7 +29,7 @@ export function Side() {
       <img style={{height: 100, width: 100, borderRadius: 20, marginRight: 15}} src={`data: image/jpeg; base64, ${user.image}`} alt="foto"/>
       <div style={{display: 'flex', flexDirection: 'column', background: '#58595B', height: 100, justifyContent: 'center'}} id='profile'>
         <h1 style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'left'}} >{user.name}</h1>
-        <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'left', fontWeight: 'bold'}}>{user.position}</p>
+        <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'left', fontWeight: 'bold'}}>{user.position.profile}</p>
         <a onClick={()=>{alert('teste')}} className="button" id='forgot'>
           <Translator path='edit' />
         </a>
