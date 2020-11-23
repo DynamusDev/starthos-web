@@ -11,6 +11,7 @@ import {
 
 interface Props {
   onClick?: any,
+  type?: "button" | "submit" | "reset" | undefined,
   backColor?: string,
   i18n?: boolean,
   containerStyle?: React.CSSProperties,
@@ -83,6 +84,7 @@ export function Button(props: Props) {
   return (
     <Container 
       className="button" 
+      type={props.type}
       style={{
         ...props.containerStyle, 
         background: background || props.backColor

@@ -7,7 +7,8 @@ export default {
     aeroportos: 'AIRPORTS',
     tasks: 'My Tasks',
     ocorrências: 'Events',
-    addUser: 'Add Member',
+    addUser: 'Add new user',
+    addNewUser: 'Add Member',
     editUser: 'Edit Member',
     translator: 'Language',
     logout: 'Logout',
@@ -31,6 +32,13 @@ export default {
     password: 'password',
     forgotPassword: 'Forgot my password',
     send: 'Send',
-    comeBackLogin: 'Comeback to login'
+    comeBackLogin: 'Comeback to login',
+    name: 'Name',
+    aeroportoDeTrabalho: 'Airport work',
+    position: 'Position',
+    phone: 'Phone',
+    userKeyResponder: 'The user ir an key responder?',
+    userMaster: 'The user is an master?',
+    submit: 'Submit'
   }
 }

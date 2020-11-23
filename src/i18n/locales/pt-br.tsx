@@ -7,6 +7,7 @@ export default {
     aeroportos: 'AEROPORTOS',
     tasks: 'Minhas Tarefas',
     ocorrências: 'Ocorrências',
+    addNewUser: 'Adicionar novo membro',
     addUser: 'Novo Membro',
     editUser: 'Editar Membro',
     translator: 'Idioma',
@@ -31,6 +32,13 @@ export default {
     password: 'senha',
     forgotPassword: 'Esqueci minha senha',
     send: 'Enviar',
-    comeBackLogin: 'Retornar ao login'
+    comeBackLogin: 'Retornar ao login',
+    name: 'Nome',
+    aeroportoDeTrabalho: 'Aeroporto de trabalho',
+    position: 'Cargo',
+    phone: 'Telefone',
+    userKeyResponder: 'Usuário key responder?',
+    userMaster: 'Usuário master?',
+    submit: 'Cadastrar'
   }
 }

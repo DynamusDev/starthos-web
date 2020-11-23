@@ -46,7 +46,7 @@ export function Side() {
     {
       user.master == 1 &&
       <>
-        <Button name='addUser' onClick={()=>{alert('teste')}}/>
+        <Button name='addUser' onClick={()=>{history.push('/register')}}/>
         <Button name='editUser' onClick={()=>{alert('teste')}}/>
       </>
     }
