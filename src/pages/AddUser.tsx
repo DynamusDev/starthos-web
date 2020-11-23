@@ -171,8 +171,9 @@ export function AddUser() {
             />
             <AirportContainer 
               type='submit' 
+              style={{width: '60%', borderRadius: 8, background: color.pista, height: 80, justifyContent: 'center'}}
             >
-              <Title>
+              <Title style={{marginBottom: 0, color: color.white}}>
                 <Translator path='submit' />
               </Title>
             </AirportContainer>

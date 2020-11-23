@@ -21,14 +21,13 @@ export const Content = styled.div`
 export const Form = styled.form`
     width: 100%;
     max-width: 600px;
+    height: 800px;
 
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #E6E7E8;
-    overflow: auto;
+    overflow-y: auto;
 `;
 
 export const Input = styled.input`
