@@ -29,17 +29,19 @@ export function AddUser() {
   const [master, setMaster] = useState(false);
   const [keyResponder, setKey_responder] = useState(false);
   const [profiles, setProfiles] = useState([]);
-  const [userProfiles, setUserProfiles] : any = useState({});
-  const [userLocations, setUserLocations] : any = useState({});
+  const [userProfiles, setUserProfiles] : any = useState(null);
+  const [userLocations, setUserLocations] : any = useState(null);
   var user = JSON.parse(localStorage.getItem('user') || '');
-  var locations:[] = user.locations
+  var locations : any = user.locations
 
   async function getProfiles(){
     const response = await api.get('profiles')
     setProfiles(response.data.profiles)
+    setUserProfiles(response.data.profiles[0])
   }
 
   useEffect(() => {
+    setUserLocations(locations[0])
     getProfiles()
   }, [])
 
@@ -47,9 +49,9 @@ export function AddUser() {
     e.preventDefault();
     if(name === ''){
       alert('Por favor, preencha o nome do usuário')
-    }else if(userProfiles === {}){
+    }else if(userProfiles === null){
       alert('Por favor, selecione um cargo para o usuário')
-    }else if(userLocations === {}) {
+    }else if(userLocations === null) {
       alert('Por favor, selecione um aeroporto de trabalho para o usuário')
     }else if (telephone_number === ''){
       alert('Por favor, informe o número de telefone do usuário')
@@ -74,8 +76,8 @@ export function AddUser() {
             alert(`Sucesso!!! O usuário ${name} foi criado com sucesso`)
             setName('')
             setEmail('')
-            setUserProfiles({})
-            setUserLocations({})
+            setUserProfiles(null)
+            setUserLocations(null)
             setTelephone_number('')
             setMaster(false)
             setKey_responder(false)
@@ -105,7 +107,7 @@ export function AddUser() {
           />
           {
             loading 
-              ? <div style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              ? <div style={{height: 600, alignItems: 'center', justifyContent: 'center'}}>
                   <ReactLoading type='spin' color='#333' />
                 </div>
               : 
@@ -116,7 +118,7 @@ export function AddUser() {
                   onChange={e => setName(e.target.value)}
                 />
                 <Title> <Translator path='position' /> </Title>
-                <Select value={userProfiles.profile}>
+                <Select >
                   {profiles.map((profile: any) =>(
                     <option 
                       onClick={()=>{setUserProfiles(profile)}} 
@@ -127,7 +129,7 @@ export function AddUser() {
                   ))}
                 </Select>
                 <Title> <Translator path='aeroportoDeTrabalho' /> </Title>
-                <Select value={userLocations.airport}>
+                <Select >
                   {locations.map((location: any) =>(
                     <option 
                       onClick={()=>{setUserLocations(location)}} 

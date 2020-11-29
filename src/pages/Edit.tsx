@@ -23,11 +23,6 @@ export function Edit() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [telephone_number, setTelephone_number] = useState('');
-  const [master, setMaster] = useState(false);
-  const [keyResponder, setKey_responder] = useState(false);
-  const [profiles, setProfiles] = useState([]);
-  const [userProfiles, setUserProfiles] : any = useState({});
-  const [userLocations, setUserLocations] : any = useState({});
   const [userData, setUserData] = useState([])
   var user = JSON.parse(localStorage.getItem('user') || '');
 
@@ -134,7 +129,7 @@ export function Edit() {
           />
           {
             loading 
-            ? <div style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            ? <div style={{height: 600, alignItems: 'center', justifyContent: 'center'}}>
                 <ReactLoading type='spin' color='#333' />
               </div>
             : 

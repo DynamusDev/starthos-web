@@ -26,7 +26,7 @@ export function Emergency() {
   const [yesColor, setYesColor] = useState(color.grey);
   const [noColor, setNoColor] = useState(color.grey);
   const [types, setTypes] = useState([]);
-  const [type, setType] : any = useState({});
+  const [type, setType] : any = useState([]);
   const [isNow, setIsNow] = useState(true);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -42,10 +42,11 @@ export function Emergency() {
     const response = await api.get('type?category=emergência')
     console.log(response.data)
     setTypes(response.data.type)
+    setType(response.data.type[0])
   }
 
   async function submit() {
-    if (type === {}) {
+    if (type === null) {
       alert(`Por favor, selecione o tipo de ocorrência`)
     } else if (date === '') {
       alert(`Por favor, informe a data da ocorrência`)
@@ -69,7 +70,7 @@ export function Emergency() {
         description,
         status: 'ativo',
         user,
-        local: user.location,
+        local: user.locations[0],
         category,
         tasks: type.tasks,
         prefix,
@@ -124,7 +125,7 @@ export function Emergency() {
             title='emergência'
             textStyle={{color: color.white}}
           />
-            { loading ? <Inline style={{flex: 1}}><ReactLoading type='spin' color='#333' /></Inline>  :
+            { loading ? <Inline style={{height: 600}}><ReactLoading type='spin' color='#333' /></Inline>  :
             <>
               <Inline>
                 <Text>Está ocorrendo agora?</Text>
@@ -156,7 +157,7 @@ export function Emergency() {
               }
               <Inline>
                 <Text>Selecione o tipo de ocorrência</Text>
-                <Select value={type.type}>
+                <Select>
                   {types.map((type: any) =>(
                     <option 
                       onClick={()=>{setType(type)}} 
