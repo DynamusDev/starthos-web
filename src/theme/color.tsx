@@ -7,5 +7,6 @@ export const color = {
   grey: '#58595B',
   white: '#FFF',
   whiteChick: 'rgba(255, 255, 255, 0.7)',
-  black: '#000'
+  black: '#000',
+  green: '#008609'
 }

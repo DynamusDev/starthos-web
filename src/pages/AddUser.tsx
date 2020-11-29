@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactLoading from 'react-loading';
 
 import { Header, Side, Screen, Translator } from '../components'
 import { color } from '../theme'
@@ -14,11 +15,13 @@ import {
   AirportsContainer, 
   AirportContainer,
   Checkbox,
-  Submit
+  Submit,
+  Select
 } from '../styles/addUser';
 import { api } from '../services/api'
 
 export function AddUser() {
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [buttonColor, setButtonColor] = useState('#transparent')
@@ -53,19 +56,21 @@ export function AddUser() {
     }else if(email === ''){
       alert('Por favor, informe o email do usuário')
     }else{
+      setLoading(true)
       const data = {
         name, 
-        position: userProfiles, 
+        position: [userProfiles], 
         telephone_number, 
         email,
         master, 
         keyResponder, 
-        locations: userLocations
+        locations: [userLocations]
       }
 
       try{
         const response = await api.post('users', data)
           if(response.data.status === 201){
+            setLoading(false)
             alert(`Sucesso!!! O usuário ${name} foi criado com sucesso`)
             setName('')
             setEmail('')
@@ -75,9 +80,11 @@ export function AddUser() {
             setMaster(false)
             setKey_responder(false)
           }else{
+            setLoading(false)
             alert(response.data.error)
           }
       }catch(err){
+        setLoading(false)
         console.log(err)
       }
     }
@@ -96,88 +103,79 @@ export function AddUser() {
             textStyle={{color: color.white}}
             title='addNewUser'
           />
-          <Form onSubmit={Submit}>
-            <Title> <Translator path='name' /> </Title>
-            <Input
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
-            <Title> <Translator path='position' /> </Title>
-            <AirportsContainer>
-              {profiles.map((profile: any) => (
+          {
+            loading 
+              ? <div style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                  <ReactLoading type='spin' color='#333' />
+                </div>
+              : 
+              <Form onSubmit={Submit}>
+                <Title> <Translator path='name' /> </Title>
+                <Input
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+                <Title> <Translator path='position' /> </Title>
+                <Select value={userProfiles.profile}>
+                  {profiles.map((profile: any) =>(
+                    <option 
+                      onClick={()=>{setUserProfiles(profile)}} 
+                      value={JSON.stringify(profile)} 
+                      style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
+                    > {profile.profile} 
+                    </option>
+                  ))}
+                </Select>
+                <Title> <Translator path='aeroportoDeTrabalho' /> </Title>
+                <Select value={userLocations.airport}>
+                  {locations.map((location: any) =>(
+                    <option 
+                      onClick={()=>{setUserLocations(location)}} 
+                      value={JSON.stringify(location)} 
+                      style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
+                    > {location.airport} 
+                    </option>
+                  ))}
+                </Select>
                 <AirportContainer 
-                  key={profile.id}
                   onClick={(e)=>{
-                    e.preventDefault();
-                    setUserProfiles(profile)
+                    e.preventDefault()
+                    setMaster(!master)
                   }}
                 >
-                  <Text> {profile.profile} </Text>
-                  {
-                    userProfiles.id === profile.id &&
-                      <Ponto />
-                  }
+                  <Checkbox checked={master} onClick={()=>{setMaster(!master)}} />
+                  <Text> <Translator path='userMaster' /> </Text>
                 </AirportContainer>
-              ))}
-            </AirportsContainer>
-            <Title> <Translator path='aeroportoDeTrabalho' /> </Title>
-            <AirportsContainer>
-              {locations.map((location: any) => (
                 <AirportContainer 
-                  key={location.id}
                   onClick={(e)=>{
-                    e.preventDefault();
-                    setUserLocations(location)
-                    setButtonColor(color.pista)
-                    console.log(userLocations)
+                    e.preventDefault()
+                    setKey_responder(!keyResponder)
                   }}
                 >
-                  <Text> {location.airport} </Text>
-                  {
-                    userLocations.id === location.id &&
-                      <Ponto />
-                  }
+                  <Checkbox checked={keyResponder} onClick={()=>{setKey_responder(!keyResponder)}} />
+                  <Text> <Translator path='userKeyResponder' /> </Text>
                 </AirportContainer>
-              ))}
-            </AirportsContainer>
-            <AirportContainer 
-              onClick={(e)=>{
-                e.preventDefault()
-                setMaster(!master)
-              }}
-            >
-              <Checkbox checked={master} onChange={()=>{setMaster(!master)}} />
-              <Text> <Translator path='userMaster' /> </Text>
-            </AirportContainer>
-            <AirportContainer 
-              onClick={(e)=>{
-                e.preventDefault()
-                setKey_responder(!keyResponder)
-              }}
-            >
-              <Checkbox checked={keyResponder} onChange={()=>{setKey_responder(!keyResponder)}} />
-              <Text> <Translator path='userKeyResponder' /> </Text>
-            </AirportContainer>
-            <Title> <Translator path='phone' /> </Title>
-            <Input
-              value={telephone_number}
-              onChange={e => setTelephone_number(e.target.value)}
-            />
-            <Title> <Translator path='Email' /> </Title>
-            <Input
-              value={email}
-              type='email'
-              onChange={e => setEmail(e.target.value)}
-            />
-            <AirportContainer 
-              type='submit' 
-              style={{width: '60%', borderRadius: 8, background: color.pista, height: 80, justifyContent: 'center'}}
-            >
-              <Title style={{marginBottom: 0, color: color.white}}>
-                <Translator path='submit' />
-              </Title>
-            </AirportContainer>
-          </Form>
+                <Title> <Translator path='phone' /> </Title>
+                <Input
+                  value={telephone_number}
+                  onChange={e => setTelephone_number(e.target.value)}
+                />
+                <Title> <Translator path='Email' /> </Title>
+                <Input
+                  value={email}
+                  type='email'
+                  onChange={e => setEmail(e.target.value)}
+                />
+                <AirportContainer 
+                  type='submit' 
+                  style={{width: '60%', borderRadius: 8, background: color.pista, height: 50, justifyContent: 'center'}}
+                >
+                  <Title style={{marginBottom: 0, color: color.white}}>
+                    <Translator path='submit' />
+                  </Title>
+                </AirportContainer>
+              </Form>
+          }
         </Screen>
       </Content>
     </Container>

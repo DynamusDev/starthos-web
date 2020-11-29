@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
-export const Container = styled.button`
+export const Container = styled(Link)`
   width: 85%;
   height: 35px;
   border-radius: 8px;

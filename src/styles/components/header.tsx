@@ -3,7 +3,7 @@ import { FiArrowLeft, FiArrowRight, FiFile, FiX } from 'react-icons/fi';
 
 export const Head = styled.header`
   width: 100%;
-  height: 80px;
+  height: 60px;
   padding: 15px;
 
   display: flex;

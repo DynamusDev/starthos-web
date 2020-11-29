@@ -47,7 +47,7 @@ export const Form = styled.form`
     align-items: center;
     background-color: #E6E7E8;
     overflow-y: auto;
-    padding-top: 20px;
+    padding-top: 20px
 `;
 
 export const Input = styled.input`

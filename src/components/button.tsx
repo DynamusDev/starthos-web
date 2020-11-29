@@ -10,6 +10,7 @@ import {
 } from '../styles/components/button';
 
 interface Props {
+  to?: any,
   onClick?: any,
   type?: "button" | "submit" | "reset" | undefined,
   backColor?: string,
@@ -84,12 +85,13 @@ export function Button(props: Props) {
   return (
     <Container 
       className="button" 
+      to={props.to}
+      onClick={props.onClick}
       type={props.type}
       style={{
         ...props.containerStyle, 
         background: background || props.backColor
         }} 
-      onClick={props.onClick}
     >
       {
         props.i18n ? <I18n />

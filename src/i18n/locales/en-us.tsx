@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   translations: {
     emergência: 'EMERGENCY',
@@ -13,6 +14,8 @@ export default {
     translator: 'Language',
     logout: 'Logout',
     edit: 'Edit',
+    password: 'Password',
+    editUserData: 'Edit user data',
     signin: 'Signin',
     videoCall: 'Video Call',
     dateOfEvent: 'Date of Event',
@@ -29,7 +32,6 @@ export default {
     aircraftPrefix: 'Aircraft Prefix',
     landingHeadboard: 'Landing Headboard',
     aircraftModel: 'Aircraft Model',
-    password: 'password',
     forgotPassword: 'Forgot my password',
     send: 'Send',
     comeBackLogin: 'Comeback to login',

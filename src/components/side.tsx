@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import {FiLogOut, FiUsers, FiArchive} from 'react-icons/fi';
 import { Button, Translator } from './'
 
@@ -12,11 +12,20 @@ import {
         Container, 
         Bar,
       } from '../styles/components/side';
+import { useSSR } from 'react-i18next';
 
-export function Side() {
+  interface Props {
+    userData?: any,
+}
+
+export function Side(props: Props) {
   const [i18n, setI18n] = useState(false);
   const history = useHistory();
-  var user = JSON.parse(localStorage.getItem('user') || '');
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || ''))
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user') || ''))
+  }, [])
 
   function logout() {
     localStorage.removeItem('user')
@@ -30,23 +39,23 @@ export function Side() {
       <div style={{display: 'flex', flexDirection: 'column', background: '#58595B', height: 100, justifyContent: 'center'}} id='profile'>
         <h1 style={{color: '#fff', fontSize: 15, width: '100%', textAlign: 'left'}} >{user.name}</h1>
         <p style={{color: '#fff', fontSize: 13, width: '100%', textAlign: 'left', fontWeight: 'bold'}}>{user.position[0].profile}</p>
-        <a onClick={()=>{alert('teste')}} className="button" id='forgot'>
+        <Link to='/edit' className="button" id='forgot'>
           <Translator path='edit' />
-        </a>
+        </Link>
       </div>
     </div>
     <Bar />
-    <Button name='emergência' onClick={()=>{alert('teste')}}/>
+    <Button name='emergência' to='emergency'/>
     <Button name='manutenção' onClick={()=>{alert('teste')}}/>
     <Button name='estoque' onClick={()=>{alert('teste')}}/>
     <Button name='pista' onClick={()=>{alert('teste')}}/>
     <Button name='aeroportos' onClick={()=>{alert('teste')}}/>
     <Button name='tasks' onClick={()=>{alert('teste')}}/>
-    <Button name='ocorrências' onClick={()=>{history.push('/home')}}/>
+    <Button name='ocorrências' to='/home'/>
     {
-      user.master == 1 &&
+      user.master === true &&
       <>
-        <Button name='addUser' onClick={()=>{history.push('/register')}}/>
+        <Button name='addUser' to='/register'/>
         <Button name='editUser' onClick={()=>{alert('teste')}}/>
       </>
     }

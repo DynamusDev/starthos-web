@@ -6,10 +6,10 @@ import axios from 'axios';
 const url = 'https://starthos.com.br';
 
 export const api = axios.create({
-  baseURL: 'https://starthos.com.br'
+  baseURL: url
 });
 
-export const sock = 'https://starthos.com.br';
+export const sock = url;
 
 export const rab = axios.create({
   baseURL: 'https://ais.cavok.in/api/rab'
