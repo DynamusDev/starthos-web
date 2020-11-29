@@ -42,11 +42,10 @@ export function Emergency() {
     const response = await api.get('type?category=emergência')
     console.log(response.data)
     setTypes(response.data.type)
-    setType(response.data.type[0])
   }
 
   async function submit() {
-    if (type === null) {
+    if (type.length === 0) {
       alert(`Por favor, selecione o tipo de ocorrência`)
     } else if (date === '') {
       alert(`Por favor, informe a data da ocorrência`)
