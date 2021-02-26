@@ -17,7 +17,6 @@ export const Select = styled.select`
   height: 50px;
   text-align: center;
   background-color: transparent;
-  color: #333;
   font-size: 25px;
   border: 0;
   border-radius: 8px;
@@ -55,7 +54,6 @@ export const Button = styled.button`
   height: 150px;
   text-align: center;
   background-color: red;
-  color: #333;
   font-size: 20px;
   border: 0;
   border-radius: 10px;

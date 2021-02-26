@@ -46,7 +46,7 @@ export function Side(props: Props) {
     </div>
     <Bar />
     <Button name='emergência' to='emergency'/>
-    <Button name='manutenção' onClick={()=>{alert('teste')}}/>
+    <Button name='manutenção' to='maintenance'/>
     <Button name='estoque' onClick={()=>{alert('teste')}}/>
     <Button name='pista' onClick={()=>{alert('teste')}}/>
     <Button name='aeroportos' onClick={()=>{alert('teste')}}/>

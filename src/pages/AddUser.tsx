@@ -31,6 +31,7 @@ export function AddUser() {
   const [profiles, setProfiles] = useState([]);
   const [userProfiles, setUserProfiles] : any = useState(null);
   const [userLocations, setUserLocations] : any = useState(null);
+  const [starthos_user, setStarthos_user] = useState(false)
   var user = JSON.parse(localStorage.getItem('user') || '');
   var locations : any = user.locations
 
@@ -41,6 +42,7 @@ export function AddUser() {
   }
 
   useEffect(() => {
+    console.log(user)
     setUserLocations(locations[0])
     getProfiles()
   }, [])
@@ -66,7 +68,8 @@ export function AddUser() {
         email,
         master, 
         keyResponder, 
-        locations: [userLocations]
+        locations: [userLocations],
+        starthos_user
       }
 
       try{
@@ -119,25 +122,43 @@ export function AddUser() {
                 />
                 <Title> <Translator path='position' /> </Title>
                 <Select >
-                  {profiles.map((profile: any) =>(
-                    <option 
-                      onClick={()=>{setUserProfiles(profile)}} 
-                      value={JSON.stringify(profile)} 
-                      style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
-                    > {profile.profile} 
-                    </option>
-                  ))}
+                  {
+                    profiles.length === 0 ?
+                      <option 
+                        onClick={()=>{}} 
+                        style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
+                      > Nenhum perfil cadastrado
+                      </option>
+                      :
+                        profiles.map((profile: any) =>(
+                          <option 
+                            onClick={()=>{setUserProfiles(profile)}} 
+                            value={JSON.stringify(profile)} 
+                            style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
+                          > {profile.profile} 
+                          </option>
+                        ))
+                  }
                 </Select>
                 <Title> <Translator path='aeroportoDeTrabalho' /> </Title>
                 <Select >
-                  {locations.map((location: any) =>(
-                    <option 
-                      onClick={()=>{setUserLocations(location)}} 
-                      value={JSON.stringify(location)} 
+                  {
+                    locations.length === 0 ?
+                      <option 
+                      onClick={()=>{}} 
                       style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
-                    > {location.airport} 
-                    </option>
-                  ))}
+                      > Nenhum aeroporto cadastrado
+                      </option>
+                      :
+                        locations.map((location: any) =>(
+                          <option 
+                            onClick={()=>{setUserLocations(location)}} 
+                            value={JSON.stringify(location)} 
+                            style={{width: 'auto', textAlign: 'center', fontSize: 12, color: color.grey}}
+                          > {location.airport} 
+                          </option>
+                        ))
+                  }
                 </Select>
                 <AirportContainer 
                   onClick={(e)=>{
@@ -157,6 +178,19 @@ export function AddUser() {
                   <Checkbox checked={keyResponder} onClick={()=>{setKey_responder(!keyResponder)}} />
                   <Text> <Translator path='userKeyResponder' /> </Text>
                 </AirportContainer>
+                {
+                  user.starthos_user === true
+                    && 
+                    <AirportContainer 
+                      onClick={(e)=>{
+                        e.preventDefault()
+                        setStarthos_user(!starthos_user)
+                      }}
+                    >
+                      <Checkbox checked={starthos_user} onClick={()=>{setStarthos_user(!starthos_user)}} />
+                      <Text> <Translator path='starthosUser' /> </Text>
+                    </AirportContainer>
+                }
                 <Title> <Translator path='phone' /> </Title>
                 <Input
                   value={telephone_number}

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { Icon, Translator } from './'
 
 import { 

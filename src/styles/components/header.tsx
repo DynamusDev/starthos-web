@@ -15,6 +15,7 @@ export const Head = styled.header`
 
 export const Text = styled.h1`
   font-size: 1.5em;
+  color: ${props => props.theme.colors.text}
 `;
 
 export const Back = styled(FiArrowLeft).attrs({

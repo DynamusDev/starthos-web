@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FiPlus, FiX } from 'react-icons/fi';
+import { color } from '../theme';
 
 export const Container = styled.div`
   height: 100vh;
@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  background-color: #fcfcff;
 `
 
 export const Content = styled.div`
@@ -14,16 +15,5 @@ export const Content = styled.div`
   width: 100vw;
 
   display: flex;
+  background-color: #fcfcff;
 `;
-
-export const Add = styled(FiPlus)`
-  position: absolute;
-  top: 30px;
-  right: 40px;
-`
-
-export const Close = styled(FiX)`
-  position: absolute;
-  top: 30px;
-  right: 40px;
-`

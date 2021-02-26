@@ -15,22 +15,27 @@ export default createGlobalStyle `
   body, form {
     font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
-    background-color: #FFF;
+    background-color: ${props => props.theme.colors.background};
     text-rendering: optimizeLegibility;
+    color: ${props => props.theme.colors.text};
   };
 
   html, body, #root {
     height: 100vh;
   };
 
+  select {
+    color: ${props => props.theme.colors.text};
+  }
+
   input, button, textarea {
     font-family: 400 18px 'Ubuntu', sans-serif;
     width: 100%;
     height: 60px;
     resize: vertical;
-    color: #333;
-    background-color: #E5E5E5;
-    border: 0.3px solid #E5E5E5;
+    color: ${props => props.theme.colors.text};
+    background-color: ${props => props.theme.colors.background};
+    border: 0.3px solid ${props => props.theme.colors.background};
     border-radius: 8px;
     padding: 0 24px;
     margin-bottom: 15px;
@@ -40,6 +45,8 @@ export default createGlobalStyle `
 
   button {
     cursor: pointer;
+    background-color: transparent;
+    border-width: 0;
   }
 
   .empty {

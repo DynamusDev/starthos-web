@@ -9,7 +9,7 @@ export const Container = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: #58595B;
+  background: ${props => props.theme.colors.primary};
   overflow: auto;
 
   @media (max-width: 390px){

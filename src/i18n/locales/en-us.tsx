@@ -41,6 +41,7 @@ export default {
     phone: 'Phone',
     userKeyResponder: 'The user ir an key responder?',
     userMaster: 'The user is an master?',
-    submit: 'Submit'
+    submit: 'Submit',
+    starthosUser: 'The user ir an starthos staff?',
   }
 }

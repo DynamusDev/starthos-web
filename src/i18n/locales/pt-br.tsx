@@ -41,6 +41,7 @@ export default {
     phone: 'Telefone',
     userKeyResponder: 'Usuário key responder?',
     userMaster: 'Usuário master?',
-    submit: 'Cadastrar'
+    submit: 'Cadastrar',
+    starthosUser: 'Usuário starthos?',
   }
 }
