@@ -33,7 +33,8 @@ export const Container = styled.div`
 
     input {
       font-size: 1em;
-      background: #FFF
+      background: #FFF;
+      color: #000
     };
 
     button {
